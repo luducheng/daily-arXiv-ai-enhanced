@@ -46,6 +46,7 @@ def process_single_item(chain, item: Dict, language: str) -> Dict:
                 json={"text": content},
                 timeout=5
             )
+            print(f"resp.status_code == {resp.status_code}")
             if resp.status_code == 200:
                 result = resp.json()
                 # 约定接口返回 {"sensitive": true/false, ...}
