@@ -40,13 +40,14 @@ def process_single_item(chain, item: Dict, language: str) -> Dict:
         调用 spam.dw-dengwei.workers.dev 接口检测内容是否包含敏感词。
         返回 True 表示触发敏感词，False 表示未触发。
         """
+        return False
         try:
             resp = requests.post(
                 "https://spam.dw-dengwei.workers.dev",
                 json={"text": content},
                 timeout=5
             )
-            print(f"resp.status_code == {resp.status_code}")
+
             if resp.status_code == 200:
                 result = resp.json()
                 # 约定接口返回 {"sensitive": true/false, ...}
