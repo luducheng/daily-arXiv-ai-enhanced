@@ -5,7 +5,7 @@ name: arXiv-daily-ai-enhanced
 
 on:
   schedule:
-    - cron: "01 22 * * *"
+    - cron: "17 05 * * *"
   workflow_dispatch:
 
 permissions:
