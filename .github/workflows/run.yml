@@ -157,12 +157,6 @@ jobs:
       if: steps.dedup_check.outputs.has_new_content == 'true'
       run: |
         echo "更新文件列表... / Updating file list..."
-        echo "Current directory:"
-        pwd
-        echo "Data folder:"
-        ls -lah data/
-        echo "JSONL files:"
-        ls data/*.jsonl
         ls data/*.jsonl | sed 's|data/||' > assets/file-list.txt
         echo "文件列表更新完成 / File list updated"
 
