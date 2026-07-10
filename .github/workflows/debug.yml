@@ -1,0 +1,36 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: debug-daily-arXiv
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install dependencies
+      run: |
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        uv sync
+        
+    - name: Update file list
+      if: steps.dedup_check.outputs.has_new_content == 'true'
+      run: |
+        echo "更新文件列表... / Updating file list..."
+        echo "Current directory:"
+        pwd
+        echo "Data folder:"
+        ls -lah data/
+        echo "JSONL files:"
+        ls data/*.jsonl
+        ls data/*.jsonl | sed 's|data/||' > assets/file-list.txt
+        echo "文件列表更新完成 / File list updated"
