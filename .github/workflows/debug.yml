@@ -33,5 +33,4 @@ jobs:
         git checkout data -- data assets 
 
         pwd
-        ls
-        ls -lah data/*.json
+        ls data/
