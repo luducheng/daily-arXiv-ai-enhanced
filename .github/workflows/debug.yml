@@ -32,4 +32,6 @@ jobs:
         # Copy existing data branch files into current workspace
         git checkout data -- data assets 
 
+        pwd
+        ls
         ls -lah data/*.json
