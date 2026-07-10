@@ -23,7 +23,6 @@ jobs:
         uv sync
         
     - name: Update file list
-      if: steps.dedup_check.outputs.has_new_content == 'true'
       run: |
         echo "更新文件列表... / Updating file list..."
         echo "Current directory:"
