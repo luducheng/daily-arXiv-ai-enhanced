@@ -24,6 +24,16 @@ jobs:
         curl -LsSf https://astral.sh/uv/install.sh | sh
         uv sync
         
+    - name: Fetch existing data branch files
+      run: |
+        echo "Fetching existing data branch files..."
+
+        # Fetch data branch
+        git fetch origin data:data
+
+        # Copy existing data files into current workspace
+        git checkout data -- data  
+        
     - name: Crawl arXiv papers
       id: crawl_step
       run: |
